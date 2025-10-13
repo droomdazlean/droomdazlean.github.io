@@ -1,0 +1,451 @@
+ 
+    /* General page styling */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .content {
+      padding: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    /* Overlay styling */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: none; /* Hidden by default */
+      z-index: 10; /* Above other elements */
+    }
+
+    .overlay[data-bs-visible="true"] {
+      display: block; /* Show overlay when visible */
+    }
+
+    /* Popup form styling */
+    .popup-form {
+      position: fixed;
+      top: 20px; /* Position at the top with some margin */
+      left: 50%;
+      transform: translateX(-50%) scale(0); /* Start with scale(0) for zoom effect */
+      width: 300px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+      opacity: 0; /* Start invisible */
+      z-index: 11; /* Above the overlay */
+      backdrop-filter: blur(0px); /* Ensure form is not blurred */
+    }
+
+    .popup-form.show {
+      animation: zoomIn 1s forwards; /* Zoom in animation when showing */
+    }
+
+    .popup-form.show.rotate {
+      animation: zoomInRotate 1s forwards;
+    }
+
+    .popup-form.show.slideLeft {
+      animation: zoomInSlideLeft 1s forwards;
+    }
+
+    .popup-form.show.slideRight {
+      animation: zoomInSlideRight 1s forwards;
+    }
+
+    .popup-form.show.openBook {
+      animation: zoomInOpenBook 1s forwards;
+    }
+
+    .popup-form.show.curtain {
+      animation: zoomInCurtain 1s forwards;
+    }
+
+    .popup-form.show.fold {
+      animation: zoomInFold 1s forwards;
+    }
+
+    .popup-form.show.flip {
+      animation: zoomInFlip 1s forwards;
+    }
+
+    .popup-form.hiding {
+      animation: zoomOut 1s forwards; /* Zoom out animation when closing */
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: translateX(-50%) scale(0); /* Start small */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1); /* End full size */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomInRotate {
+      from {
+        transform: translateX(-50%) scale(0) rotate(360deg); /* Start small and rotated */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1) rotate(0deg); /* End full size and no rotation */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomInSlideLeft {
+      from {
+        transform: translateX(-100%) scale(1); /* Start off-screen left */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1); /* End centered */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomInSlideRight {
+      from {
+        transform: translateX(100%) scale(1); /* Start off-screen right */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1); /* End centered */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomInOpenBook {
+      from {
+        transform: translateX(-50%) scale(0) rotateY(90deg); /* Start small and rotated like a book */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1) rotateY(0deg); /* End full size and no rotation */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomInCurtain {
+      from {
+        transform: translateX(-50%) scale(1) rotateX(90deg); /* Start off-screen like a curtain */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1) rotateX(0deg); /* End centered */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomInFold {
+      from {
+        transform: translateX(-50%) scale(0) rotateZ(45deg); /* Start small and rotated like a fold */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1) rotateZ(0deg); /* End full size and no rotation */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomInFlip {
+      from {
+        transform: translateX(-50%) scale(0) rotateX(180deg); /* Start small and flipped */
+        opacity: 0; /* Invisible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(1) rotateX(0deg); /* End full size and no rotation */
+        opacity: 1; /* Fully visible at end */
+      }
+    }
+
+    @keyframes zoomOut {
+      from {
+        transform: translateX(-50%) scale(1); /* Start full size */
+        opacity: 1; /* Fully visible at start */
+      }
+      to {
+        transform: translateX(-50%) scale(0); /* End small */
+        opacity: 0; /* Invisible at end */
+      }
+    }
+
+    .popup-form h2 {
+      margin-top: 0;color:darkblue;
+    }
+
+.popup-form p{color:darkblue;}
+
+    .popup-form input[type="text"],
+    .popup-form input[type="email"],
+    .popup-form input[type="password"] {
+      width: calc(100% - 20px);
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+    }
+
+    .popup-form button {
+      width: calc(50% - 5px);
+      padding: 10px;
+      margin-top: 10px;
+    }
+
+    .close-btn {
+      background-color:darkblue;color:white;cursor:pointer;
+    }
+    
+    .close-btn:hover{
+        opacity:.4
+     }
+
+     /* Disable interaction with the rest of the page except popup and overlay */
+     body[data-bs-overlay-active="true"] * {
+       pointer-events: none; /* Disable clicks on everything */
+     }
+
+     body[data-bs-overlay-active="true"] .overlay,
+     body[data-bs-overlay-active="true"] .popup-form,
+     body[data-bs-overlay-active="true"] .popup-form * {
+       pointer-events: auto; /* Allow interaction with overlay and popup form only */
+     }
+     
+     body[data-bs-overlay-active="true"] a,
+     body[data-bs-overlay-active="true"] button:not(.close-btn) {
+       pointer-events:none
+     }
+  
+    
+        :root {
+            --primary: #001f3f;
+            /* Dark Blue */
+            --secondary: #0074D9;
+            /* Light Blue */
+            --accent: #FF4136;
+            /* Red Accent */
+            --background: #F6F6F6;
+            /* Light Background */
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+      body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(to right, var(--primary), var(--secondary));
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* This keeps the image fixed */
+    background-position: center center; /* Corrected positioning */
+    color: white;
+    min-height: 100vh;
+    font-size: 0.9rem;
+}
+.working-hours {
+    background-color: #f0f0f0; color:darkblue;margin:50px;/* Light gray background */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+}
+
+.working-hours h3 {
+    margin-top: 0;color:darkblue;
+}
+
+.working-hours ul {
+    list-style: none;
+    padding: 0;
+}
+
+.working-hours li {
+    margin-bottom: 10px;
+}
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem;
+            /* Reduced padding */
+        }
+
+        section {
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            /* Smaller border radius */
+            padding: 1rem;
+            /* Reduced padding */
+            margin: 1rem 0;
+            /* Reduced margin */
+            backdrop-filter: blur(5px);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+            animation: zoomIn 5s ease;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            /* Adjusted minmax value */
+            gap: 1rem;
+            /* Reduced gap */
+            margin: 1rem 0;
+            /* Reduced margin */
+        }
+
+        .service-card {
+            background: rgba(0,0,0, 0.3);
+            padding: 1rem;color:white;
+            /* Reduced padding */
+            border-radius: 8px;
+            /* Smaller border radius */
+            border-left: 4px solid var(--secondary);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-3px);
+            /* Reduced hover effect */
+            background: rgba(255, 255, 255, 0.25);
+        }
+
+        .icon {
+            font-size: 2rem;
+            /* Reduced icon size */
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 0.5rem;
+            /* Reduced margin */
+        }
+
+        .menu-float {
+            position: fixed;
+            top: 1rem;
+            /* Reduced bottom spacing */
+            right: 1rem;
+            /* Reduced right spacing */
+            background: rgba(255,255,255,0.7);
+            color: darkblue;
+            padding: 0.8rem;
+            /* Reduced padding */
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            animation: pulse 5s infinite;
+            z-index: 1000;
+        }
+       .whatsapp-float {
+            position: fixed;
+            bottom: 1rem;
+            /* Reduced bottom spacing */
+          left: 1rem;
+            /* Reduced right spacing */
+            background: #25D366;
+            color: white;
+            padding: 0.8rem;
+            /* Reduced padding */
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+            animation: pulse 2s infinite;
+            z-index: 1000;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.1);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .contact-info {
+            text-align: center;
+            padding: 2rem;
+            /* Reduced padding */
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            /* Smaller border radius */
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            /* Adjusted minmax value */
+            gap: 1rem;
+            /* Reduced gap */
+            margin-top: 2rem;
+            /* Reduced margin */
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            /* Reduced padding */
+            background-color: rgba(255, 255, 255, 0.15);
+            border-radius: 8px;
+            /* Smaller border radius */
+        }
+
+        h1,
+        h2,
+        h3 {
+            text-align: center;
+            color: white;
+            margin-bottom: 0.3rem;
+            /* Reduced margin */
+            text-shadow: 0.5px 0.5px #000;
+            font-size: 1.5rem;
+            /* Adjusted font size */
+        }
+
+        p,
+        li {
+            font-size: 0.85rem;
+            /* Reduced font size */
+        }
+
+        ul {
+            padding-left: 1.2rem;
+        }

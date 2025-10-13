@@ -1,0 +1,695 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Droom Dazlean Solutions</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Droom Dazlean Solutions offers AI-powered software development, cloud computing, cybersecurity, and business automation services in Zimbabwe. Elevate your business with expert technology consulting and innovation." />
+  <meta name="keywords" content="Software Development, AI Solutions, Cloud Computing, Cybersecurity, Business Automation, Zimbabwe, Technology Consulting" />
+  <meta name="author" content="Droom Dazlean Solutions" />
+  <meta property="og:title" content="Droom Dazlean Solutions - Technology Innovation & Digital Transformation" />
+  <meta property="og:description" content="Leading AI & tech solutions provider in Zimbabwe, accelerating digital transformation for your business." />
+  <meta property="og:url" content="https://droomdazlean.github.io/dazlean" />
+  <meta property="og:type" content="website" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:wght@400;600&family=Fira+Code&display=swap" rel="stylesheet" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    /* Reset & base */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Roboto', sans-serif;
+      background-color: #f9f5f1;  /* Cream */
+      color: #5b1e23;  /* Dark Maroon text */
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+    }
+
+    /* Watermark (semi‑transparent) */
+    #watermark {
+      position: fixed;
+      top: 50%;
+      right: 2vw;
+      transform: translateY(-50%);
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      background-image: url('img.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      /* make it semi‑transparent via opacity or rgba overlay */
+      opacity: 0.3;
+      box-shadow: 0 0 20px rgba(26, 4, 88, 0.06);
+      user-select: none;
+      pointer-events: none;
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 2.3rem;
+      color: rgba(26, 4, 88, 0.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      white-space: nowrap;
+      padding: 10px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      z-index: 9999;
+    }
+
+    /* Header */
+    header.navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff5ef;
+      padding: 0.8rem 2rem;
+      box-shadow: 0 3px 8px rgba(26, 4, 88, 0.12);
+      position: sticky;
+      top: 0;
+      z-index: 10000;
+      user-select: none;
+      height: 60px;
+    }
+    .navbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 900;
+      font-family: 'Merriweather', serif;
+      font-size: 1.5rem;
+      color: #5b1e23;
+      text-decoration: none;
+      user-select: text;
+      flex-shrink: 0;
+    }
+    .navbar-brand img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      opacity: 0.7;
+      user-select: none;
+    }
+    button.btn-login {
+      background-color: #5b1e23;
+      color: #fff5ef;
+      font-weight: 700;
+      border: none;
+      padding: 0.4rem 1.2rem;
+      border-radius: 48px;
+      font-size: 1rem;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+      flex-shrink: 0;
+    }
+    button.btn-login:hover,
+    button.btn-login:focus {
+      background-color: #7d2629;
+      outline: none;
+    }
+
+    /* Hero / slider container */
+    .hero {
+      position: relative;
+      height: calc(100vh - 60px);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 0 1.5rem;
+      color: #fff;
+      user-select: none;
+      z-index: 999;
+    }
+    /* We will have multiple slides inside hero */
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center center;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+      z-index: 0;
+    }
+    .hero-slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .hero::before {
+      /* optional overlay for darkening slides */
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(26, 4, 88, 0.6);
+      z-index: 0;
+    }
+    .hero-content {
+      position: relative;
+      max-width: 720px;
+      margin: 0 auto;
+      z-index: 2;
+
+          }
+    .hero-content h1 {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 3rem;
+      margin: 0;
+            letter-spacing: 0.15em;
+      line-height: 1.15;color: white;
+text-shadow:
+  -2px -2px 0 black,
+   2px -2px 0 black,
+  -2px  2px 0 black,
+   2px  2px 0 black;
+    }
+    .hero-content p {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin: 1rem 0 3rem;
+      color: #dbd4cfcc;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+    }
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.3rem;
+      flex-wrap: wrap;
+      z-index: 2;
+    }
+    .btn-hero {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 700;
+      padding: 0.85rem 2.2rem;
+      border-radius: 40px;
+      cursor: pointer;
+      user-select: none;
+      border: 2px solid #f5f0eb;
+      color: #f5f0eb;
+      background-color: transparent;
+      font-size: 1.1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-hero i {
+      font-size: 1.3rem;
+    }
+    .btn-hero:hover,
+    .btn-hero:focus {
+      background-color: #f5f0eb;
+      color: #5b1e23;
+      border-color: #5b1e23;
+      outline: none;
+    }
+
+    @keyframes fadeSlideUp {
+      0%   { opacity: 0; transform: translateY(20px); }
+      40%  { opacity: 1; transform: translateY(0); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Main content / sections */
+    main {
+      max-width: 920px;
+      margin: 3rem auto 6rem auto;
+      padding: 0 1rem;
+      position: relative;
+      z-index: 11;
+    }
+    section {
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    section h2 {
+      font-family: 'Merriweather', serif;
+      font-size: 2.25rem;
+      font-weight: 700;
+      color: #5b1e23;
+      border-bottom: 3px solid #a34143;
+      padding-bottom: 0.3rem;
+      margin-bottom: 1.8rem;
+      letter-spacing: 0.06em;
+    }
+    section p {
+      font-family: 'Roboto', sans-serif;
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #5b1e23cc;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Services grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2.5rem;
+    }
+    .service-card {
+      background: #fff5ed;
+      border-radius: 14px;
+      box-shadow: 0 6px 22px #a3414380;
+      overflow: hidden;
+      transition: box-shadow 0.35s ease, transform 0.35s ease;
+      cursor: default;
+      display: flex;
+      flex-direction: column;
+    }
+    .service-card:hover, .service-card:focus-visible {
+      box-shadow: 0 14px 38px #a34143dd;
+      transform: translateY(-7px);
+      outline: none;
+      z-index: 10;
+    }
+    .service-img {
+      width: 100%;
+      height: 180px;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .service-content {
+      padding: 1.2rem 1.5rem 1.8rem 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.6rem;
+    }
+    .service-icon {
+      color: #7d312b;
+      font-size: 2.4rem;
+    }
+    .service-title {
+      font-family: 'Merriweather', serif;
+      font-weight: 700;
+      font-size: 1.15rem;
+      color: #68322e;
+      margin: 0;
+    }
+    .service-desc {
+      font-family: 'Roboto', sans-serif;
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: #531f1bcc;
+      line-height: 1.46;
+    }
+
+    /* Contact section */
+    .contact-info {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      border-top: 2px solid #a34143;
+      padding-top: 2rem;
+    }
+    .contact-info p {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      justify-content: center;
+      font-size: 1rem;
+      margin-bottom: 1.3rem;
+      color: #5b1e234d;
+    }
+    .contact-info i {
+      font-size: 1.3rem;
+      color: #a34143;
+      flex-shrink: 0;
+    }
+    .contact-links {
+      margin-top: 2rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.3rem;
+      flex-wrap: wrap;
+    }
+    .contact-links a {
+      font-weight: 700;
+      font-size: 1.1rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 48px;
+      background: #5b1e23;
+      color: #f5f0eb;
+      box-shadow: 0 7px 20px rgba(26, 4, 88, 0.7);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      user-select: none;
+      text-decoration: none;
+    }
+    .contact-links a:hover, .contact-links a:focus {
+      background-color: #774238;
+      box-shadow: 0 9px 28px rgba(119, 66, 56, 0.85);
+      outline: none;
+    }
+    .contact-links a i {
+      font-size: 1.3rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #5b1e23;
+      color: #f5f0eb;
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+      font-weight: 600;
+      padding: 1.75rem 1rem 3rem 1rem;
+      font-size: 0.9rem;
+      user-select: none;
+      border-radius: 0 0 14px 14px;
+      position: relative;
+      z-index: 9;
+    }
+    footer a {
+      color: #f5f0eb;
+      border-bottom: 1.5px solid transparent;
+      transition: border-color 0.3s ease;
+      text-decoration: none;
+    }
+    footer a:hover, footer a:focus {
+      border-bottom-color: #e6cdc5;
+      outline: none;
+    }
+    footer i {
+      margin-left: 0.4rem;
+    }
+
+    /* Modal overrides */
+    .bg-maroon {
+      background-color: #5b1e23 !important;
+    }
+    .text-maroon {
+      color: #5b1e23 !important;
+    }
+    .text-cream {
+      color: #f5f0eb !important;
+    }
+    .btn-maroon {
+      background-color: #5b1e23;
+      border-color: #5b1e23;
+      color: #f5f0eb;
+    }
+    .btn-maroon:hover, .btn-maroon:focus {
+      background-color: #7d2629;
+      border-color: #7d2629;
+      outline: none;
+      box-shadow: 0 0 15px rgba(125, 38, 41, 0.75);
+    }
+    
+    .btn-outline-maroon {
+      color: #5b1e23;
+      border-color: #5b1e23;
+    }
+    .btn-outline-maroon:hover, .btn-outline-maroon:focus {
+      background-color: #5b1e23;
+      color: #f5f0eb;
+      outline: none;
+      box-shadow: 0 0 12px rgba(26, 4, 88, 0.9);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 650px) {
+     .toHideInPhone{
+       display: none
+     }
+      .hero{
+        z-index:99999
+      }
+      .navbar-brand img {
+        width: 35px;
+        height: 35px;
+      }
+      .navbar-brand {
+        font-size: 1.3rem;
+      }
+      .navbar-title {
+        display: none;
+      }
+      main {
+        margin: 2rem 1rem 3rem;
+      }
+      section h2 {
+        font-size: 1.5rem;
+      }
+      .services-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .contact-info p {
+        font-size: 0.95rem;
+        flex-direction: column;
+        gap: 0.3rem;
+        text-align: center;
+      }
+      .contact-info i {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="watermark" aria-hidden="true"></div>
+
+  <header class="navbar" role="banner" aria-label="Site header">
+    <a href="#" class="navbar-brand" aria-label="Droom Dazlean Solutions Home">
+      <img src="https://img.icons8.com/ios-filled/50/5b1e23/organization.png" alt="Organization Icon" />
+      Droom Dazlean Solutions
+    </a>
+    <h1 class="navbar-title toHideInPhone" aria-hidden="true"></h1>
+    <button type="button" class="btn-login toHideInPhone" data-bs-toggle="modal" data-bs-target="#loginModal" aria-label="Login To Droom Dazlean Solutions">
+    Login
+    </button>
+  </header>
+
+  <div class="hero" role="img" aria-label="Technology background slideshow" tabindex="0">
+    <!-- Slides (background images) -->
+    <div class="hero-slide" style="background-image: url('img4.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img60.jpg');"></div>
+    <div class="hero-slide" style="background-image: url('img7.jpg');"></div>
+
+    <div class="hero-content">
+      <h1 class="toHideInPhone">Driving Digital Excellence through AI Innovation</h1>
+      <p>Transform your enterprise with intelligent automation, data analytics, and custom-fit technology solutions.</p>
+      <div class="hero-buttons" role="group" aria-label="Primary action buttons">
+        <a href="https://wa.me/263787702386?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20services." target="_blank" rel="noopener" class="btn-hero btn-whatsapp" aria-label="Contact Us on WhatsApp">
+          <i class="fa fa-phone"></i> Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main role="main">
+    <section id="about" tabindex="0" aria-labelledby="about-title">
+      <h2 id="about-title">About Us</h2>
+      <p>
+        Droom Dazlean Solutions is a professional technology consulting company based in Chitungwiza, Zimbabwe. We specialize in data-driven AI software development, secure cloud infrastructure, robust cybersecurity, and automated business solutions. We help organizations unlock growth potential through innovative technology.
+      </p>
+    </section>
+
+    <section id="services" tabindex="0" aria-labelledby="services-title">
+      <h2 id="services-title">Our Services</h2>
+      <div class="services-grid" role="list">
+        <article class="service-card" role="listitem" tabindex="0" aria-label="Custom AI Software Development">
+          <img src="soft1.jpg" alt="Custom Software Development" class="service-img" />
+          <div class="service-content">
+            <i class="fa fa-code service-icon"></i>
+            <h3 class="service-title">Custom Software Development</h3>
+            <p class="service-desc">AI-enhanced, tailor-made software designed to optimize your operations and innovation capabilities.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" tabindex="0" aria-label="Cloud Computing Solutions">
+          <img src="soft2.webp" alt="Cloud Computing" class="service-img" />
+          <div class="service-content">
+            <i class="fa fa-cloud service-icon"></i>
+            <h3 class="service-title">Cloud Computing</h3>
+            <p class="service-desc">Secure, scalable cloud infrastructure enabling flexible and robust business processes.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" tabindex="0" aria-label="IT Consultancy">
+          <img src="soft3.jpg" alt="IT Consultancy" class="service-img" />
+          <div class="service-content">
+            <i class="fa fa-comments service-icon"></i>
+            <h3 class="service-title">IT Consultancy</h3>
+            <p class="service-desc">Professional guidance aligning your technology investments with your business objectives.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" tabindex="0" aria-label="Cybersecurity">
+          <img src="soft5.avif" alt="Cybersecurity" class="service-img" />
+          <div class="service-content">
+            <i class="fa fa-shield-alt service-icon"></i>
+            <h3 class="service-title">Cybersecurity</h3>
+            <p class="service-desc">Comprehensive security solutions designed to protect your digital assets and data.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" tabindex="0" aria-label="Mobile App Development">
+          <img src="soft6.avif" alt="Mobile App Development" class="service-img" />
+          <div class="service-content">
+            <i class="fa fa-mobile-alt service-icon"></i>
+            <h3 class="service-title">Mobile App Development</h3>
+            <p class="service-desc">Creating engaging and user-friendly mobile apps for all major platforms.</p>
+          </div>
+        </article>
+
+        <article class="service-card" role="listitem" tabindex="0" aria-label="Data Analytics Service">
+          <img src="soft7.webp" alt="Data Analytics" class="service-img" />
+          <div class="service-content">
+            <i class="fa fa-chart-bar service-icon"></i>
+            <h3 class="service-title">Data Analytics</h3>
+            <p class="service-desc">Transforming your business data into actionable insights for strategic decisions.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact" tabindex="0" aria-labelledby="contact-title">
+      <h2 id="contact-title">Contact Us</h2>
+      <div class="contact-info" role="contentinfo">
+        <p><i class="fa fa-envelope"></i> <a href="mailto:droomdazlean@outlook.com">droomdazlean@outlook.com</a></p>
+        <p><i class="fa fa-phone"></i> <a href="tel:+263787702386">+263 78 770 2386</a></p>
+        <p><i class="fa fa-location-dot"></i> 28150, Unit L, Chitungwiza, Zimbabwe</p>
+        <div class="contact-links" role="group" aria-label="Contact and group links">
+          <a href="https://chat.whatsapp.com/EJIWivXNhWHFXGw5XO9KYa" target="_blank" rel="noopener" class="btn-hero btn-whatsapp-group" aria-label="Join our WhatsApp Group">
+            <i class="fa fa-users"></i> Join Our WhatsApp Group
+          </a>
+         </div>
+         <div style="margin-top:25px;">
+          <p>
+   <a href="https://www.facebook.com/profile.php?id=61563568821308" target="_blank">Follow Us On Facebook at https://www.facebook.com/profile.php?id=61563568821308</a>
+       
+          </p>
+         </div>
+        
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo" aria-label="Page footer">
+    <p>
+      Connect with us on
+      <a href="https://www.facebook.com/people/Droom-Dazlean-Solutions/61563568821308/" target="_blank" rel="noopener" aria-label="Facebook page">Facebook <i class="fa-brands fa-facebook"></i></a>
+    </p>
+    <p>© 2025 Droom Dazlean Solutions. All rights reserved.</p>
+  </footer>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="font-family: 'Roboto', sans-serif;">
+        <div class="modal-header bg-maroon text-cream">
+          <h5 class="modal-title" id="loginModalLabel">Login To Droom Dazlean Solutions</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="inputEmail" class="form-label text-maroon">Email address</label>
+              <input type="email" class="form-control" id="inputEmail" placeholder="name@example.com" required autofocus>
+            </div>
+            <div class="mb-3">
+              <label for="inputPassword" class="form-label text-maroon">Password</label>
+              <input type="password" class="form-control" id="inputPassword" placeholder="Password" required>
+            </div>
+            <div class="mb-3 form-check">
+              <input type="checkbox" class="form-check-input" id="rememberCheck">
+              <label class="form-check-label text-maroon" for="rememberCheck">Remember me</label>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="submit" class="btn btn-maroon text-cream fw-bold">Login</button>
+            <button type="button" class="btn btn-outline-maroon fw-semibold" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap Bundle JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Scroll fade animation for sections -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const sections = document.querySelectorAll('main section');
+      const options = { threshold: 0.15 };
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, options);
+      sections.forEach(section => observer.observe(section));
+    });
+  </script>
+
+  <!-- Hero slideshow script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.hero-slide');
+      let current = 0;
+      const numSlides = slides.length;
+      const intervalMs = 5000;  // 5 seconds
+
+      function showSlide(index) {
+        slides.forEach((sl, i) => {
+          sl.classList.remove('active');
+          if (i === index) {
+            sl.classList.add('active');
+          }
+        });
+      }
+
+      function nextSlide() {
+        current = (current + 1) % numSlides;
+        showSlide(current);
+      }
+
+      // initialize first slide visible
+      showSlide(0);
+
+      // start interval
+      setInterval(nextSlide, intervalMs);
+    });
+  </script>
+</body>
+</html>
+
+
+
