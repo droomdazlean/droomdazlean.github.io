@@ -850,7 +850,7 @@ body {
 
 /* Contact */
 .contact-grid {
-    display: grid;
+    display: grid;overflow-x:auto;
     grid-template-columns: 1fr 1fr;
     gap: 4rem;
 }
