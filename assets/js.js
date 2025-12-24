@@ -17,11 +17,11 @@ navLinks.forEach(link => {
 });
 
 const heroBackgrounds = [
-    'bg1.webp',
-    'bg2.jpg',
-    'bg3.webp',
-    'bg4.png',
-    'bg5.avif'
+    '../assets/bg1.webp',
+    '../assets/bg2.jpg',
+    '../assets/bg3.webp',
+    '../assets/bg4.png',
+    '../assets/bg5.avif'
 ];
 
 let currentBgIndex = 0;
