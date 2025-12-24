@@ -86,7 +86,7 @@ body {
 
 .nav-menu a:hover,
 .nav-menu a.active {
-    color: var(--primary-blue);
+    color: orange;
 }
 
 .nav-menu a::after {
@@ -1268,35 +1268,32 @@ transform: translateY(-1px); / Lift effect */
     .nav-toggle {
         display: flex;
     }
-
+.logo{
+font-size:1em;}
     .nav-menu {
         position: fixed;
         left: -100%;
         top: 77px;
         flex-direction: column;
-        background: var(--pure-white);
+        background: darkblue;
         width: 100%;
-        text-align: center;
+        text-align: left;
         transition: left 0.3s ease;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         padding: 2rem 0;
-        height: calc(100vh - 77px);
         overflow-y: auto;
     }
 
     .nav-menu.active {
-        left: 0;
+        left: 0;color:orange;
     }
 
-    .nav-menu li {
-        margin: 1.5rem 0;
-        padding: 0 2rem;
-    }
+   
 
+    .nav-menu li {border-bottom:solid;border-width:0.1px;border-color:gray;}
     .nav-menu a {
         font-size: 1.2rem;
-        padding: 1rem 0;
-        display: block;
+         display: block;color:white;
     }
 
     .hero {
