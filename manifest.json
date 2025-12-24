@@ -1,0 +1,74 @@
+{
+  "name": "Droom Dazlean Solutions",
+  "short_name": "Droom Dazlean",
+  "description": "Technology consulting experts in custom software, mobile apps, IoT, cloud & AI solutions - Chitungwiza, Harare, Zimbabwe",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#007bff",
+  "background_color": "#ffffff",
+  "categories": ["business", "productivity", "developer-tools"],
+  
+  "icons": [
+    {
+      "src": "https://www.droomdazlean.com/assets/droomdazleansolutions.logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://www.droomdazlean.com/assets/droomdazleansolutions.logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  
+  "screenshots": [
+    {
+      "src": "https://www.droomdazlean.com/assets/droomdazlean-2.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide"
+    }
+  ],
+  
+  "shortcuts": [
+    {
+      "name": "Contact Us",
+      "short_name": "Contact",
+      "description": "Get in touch with Droom Dazlean Solutions",
+      "url": "/contact",
+      "icons": [{
+        "src": "https://www.droomdazlean.com/assets/droomdazleansolutions.logo.jpg",
+        "sizes": "96x96"
+      }]
+    },
+    {
+      "name": "Our Services",
+      "short_name": "Services",
+      "description": "View all our technology services",
+      "url": "/services",
+      "icons": [{
+        "src": "https://www.droomdazlean.com/assets/droomdazleansolutions.logo.jpg",
+        "sizes": "96x96"
+      }]
+    }
+  ],
+  
+  "lang": "en-ZW",
+  "dir": "ltr",
+  
+  "prefer_related_applications": false,
+  
+  "related_applications": [],
+  
+  "protocol_handlers": [
+    {
+      "protocol": "web+tels",
+      "title": "Call Droom Dazlean Solutions",
+      "url": "/contact"
+    }
+  ]
+}
