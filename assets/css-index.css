@@ -466,10 +466,9 @@ modal.fade{transition: opacity 1s ease;}
 .portfolio-item {
     position: relative;
     border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
     cursor: pointer;
-    height: 380px;
+    height: 500px;
 }
 
 .portfolio-item img {
@@ -1614,4 +1613,5 @@ text-decoration:none;
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
 
