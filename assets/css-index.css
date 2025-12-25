@@ -1152,7 +1152,7 @@ footer {
     }
     
     .portfolio-item {
-        height: 320px;
+        height: 500px;
     }
     
     .stats-grid {
@@ -1407,7 +1407,6 @@ text-decoration:none;
         .portfolio-item {
             background: white;
             border-radius: 15px;
-            overflow: hidden;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
             animation: fadeInUp 0.6s ease;
@@ -1613,5 +1612,6 @@ text-decoration:none;
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
 
 
