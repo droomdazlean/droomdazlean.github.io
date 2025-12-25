@@ -541,5 +541,96 @@
 
 
     <script src="sys.js"></script>
+
+
+
+<div class="modal fade show" id="pageLoaderModal" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false" style="display:block;">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-center p-4">
+      <h4 class="mb-2 fw-bold">Droom Dazlean Solutions</h4>
+      <p class="mb-4">Welcome</p>
+
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+
+      <p class="mt-3 small text-muted">Loading resources…</p>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+(function () {
+  document.body.classList.add("loading");
+
+  const modalEl = document.getElementById("pageLoaderModal");
+  const loaderModal = new bootstrap.Modal(modalEl);
+
+  loaderModal.show();
+
+  const imagePromises = [];
+
+  // Handle <img> tags
+  document.querySelectorAll("img").forEach(img => {
+    if (img.complete && img.naturalHeight !== 0) return;
+
+    imagePromises.push(
+      new Promise(resolve => {
+        img.addEventListener("load", resolve);
+        img.addEventListener("error", resolve);
+      })
+    );
+  });
+
+  // Handle background images (inline + CSS)
+  document.querySelectorAll("*").forEach(el => {
+    const bg = getComputedStyle(el).backgroundImage;
+    if (!bg || bg === "none") return;
+
+    const matches = bg.match(/url\(["']?(.*?)["']?\)/g);
+    if (!matches) return;
+
+    matches.forEach(match => {
+      const src = match.replace(/url\(["']?|["']?\)/g, "");
+
+      imagePromises.push(
+        new Promise(resolve => {
+          const img = new Image();
+          img.onload = resolve;
+          img.onerror = resolve;
+          img.src = src;
+        })
+      );
+    });
+  });
+
+  // When everything is loaded
+  Promise.all(imagePromises).then(() => {
+    setTimeout(() => {
+      loaderModal.hide();
+      modalEl.addEventListener("hidden.bs.modal", () => {
+        modalEl.remove();
+        document.body.classList.remove("loading");
+      });
+    }, 300); // small UX delay
+  });
+})();
+</script>
+
+
+    
 </body>
 </html>
