@@ -87,7 +87,7 @@ modal.fade{transition: opacity 1s ease;}
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 1.5rem;
+    font-size: 1rem;
     font-weight: bold;
     color: var(--primary-blue);
     z-index: 1002;
@@ -1612,6 +1612,7 @@ text-decoration:none;
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
 
 
 
