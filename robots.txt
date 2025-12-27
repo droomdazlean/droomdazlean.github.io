@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://droomdazlean.com.com/sitemap.xml
+Sitemap: https://droomdazlean.com/sitemap.xml
